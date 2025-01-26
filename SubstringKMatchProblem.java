@@ -21,7 +21,6 @@ public class SubstringKMatchProblem {
 
             // Adjusting to 0-based indexing
             String substring = s.substring(l - 1, r); // Extract substring S [l…r] with 0-based indexing
-            System.out.println(substring);
             // Find the result for the current query
             int match = findMatch(substring, k);
             result.append(match).append("\n");
@@ -51,17 +50,18 @@ public class SubstringKMatchProblem {
         // Identify the character at index k-1
         char targetChar = substring.charAt(k - 1); // Get the character at position k-1
 
+        // We are finding the order of targetChar among 'A' or 'B'
         if (targetChar == 'A') {
-            // If it's 'A', find its order among 'A' characters
-            int aIndex = aPositions.indexOf(k - 1);
-            if (aIndex != -1 && aIndex < bPositions.size()) {
-                return bPositions.get(aIndex) + 1; // Return the corresponding 'B' position, adjusting for 1-based indexing
+            // Find its order among 'A' characters
+            int orderA = aPositions.indexOf(k - 1); // Find the index in the 'A' list
+            if (orderA != -1 && orderA < bPositions.size()) {
+                return bPositions.get(orderA) + 1; // Return the corresponding 'B' position, adjusting for 1-based indexing
             }
         } else if (targetChar == 'B') {
-            // If it's 'B', find its order among 'B' characters
-            int bIndex = bPositions.indexOf(k - 1);
-            if (bIndex != -1 && bIndex < aPositions.size()) {
-                return aPositions.get(bIndex) + 1; // Return the corresponding 'A' position, adjusting for 1-based indexing
+            // Find its order among 'B' characters
+            int orderB = bPositions.indexOf(k - 1); // Find the index in the 'B' list
+            if (orderB != -1 && orderB < aPositions.size()) {
+                return aPositions.get(orderB) + 1; // Return the corresponding 'A' position, adjusting for 1-based indexing
             }
         }
 
