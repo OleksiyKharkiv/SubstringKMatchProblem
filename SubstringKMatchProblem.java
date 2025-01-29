@@ -1,5 +1,6 @@
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SubstringKMatchProblem {
     public static void main(String[] args) throws IOException {
@@ -21,7 +22,6 @@ public class SubstringKMatchProblem {
 
             // Extract the substring S[l..r-1]
             String substring = s.substring(l, r);
-            System.out.println("Query " + (i + 1) + ": Substring = " + substring);
 
             // Create lists for the indices of 'A' and 'B' in the substring
             List<Integer> aPositions = new ArrayList<>();
